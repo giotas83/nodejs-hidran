@@ -1,0 +1,60 @@
+*********************************************************
+NPM
+
+Installato globalmente:
+    typescript
+    nodemon: per riavviare in automatico node ad ogni salvataggio -> nodemon nomefile (se file generale nodemon index.js)
+
+inizializzato package
+    npm init
+
+installato nel progetto:
+     npm i --save expressjs
+     npm i --save lodash
+
+installare typescript per utilizzarlo in node
+    npm i --save-dev typescript
+    npm i --save-dev @types/node
+    npm i --save-dev @types/express (se installato express)
+    npm i --save-dev @types/lodash (se installato lodash)
+
+inizializzare typescript
+    tsc --init
+
+    creai il file di configurazione, aggiungere outDir (qui ci sarà il file js da avviare)
+    {
+        "compileOnSave": true,   (aggiungere se volgio compilare in automatico ad ogni salvataggio)
+        "compilerOptions": {
+            // …
+            "outDir": "./dist"
+            // …
+        }
+    }
+
+mettere in package.json lo script per far partire senza tipescript:
+    "start-index": "nodemon index.js"
+    nodemon è per riavviare node ad ogni modifica
+
+mettere in package.json lo script per far partire con typescript:
+    https://stackoverflow.com/questions/37979489/how-to-watch-and-reload-ts-node-when-typescript-files-change
+    https://www.npmjs.com/package/ts-node
+    
+    npm install --save-dev ts-node nodemon
+
+    ts-node serve per compilare typescript per node
+    aggiungere questo file di configurazione per nodemon
+    {
+        "execMap": {
+            "ts": "ts-node"
+        },
+    "ignore": ["*.json"]
+    }
+
+    l'ignore serve per forza, altrimenti se creo un nuovo file .json nodemon rileva la modifica e riparte creando un loop,
+    aggiungo poi il path delle cartelle e i tipi di file da ignorare, non solo .json 
+
+
+    comando in package.json -> "start-index": "nodemon index.ts"
+    
+
+
