@@ -60,7 +60,26 @@ readStr.on('data', (data)=> { // data = buffer
     writeStr.write(data)
 });
 
-// PIPE STREAM
+// gestire errore in lettura e scrittura
+readStr.on('error', (err)=> console.error(err));
+writeStr.on('error', (err)=> console.error(err));
 
+// PIPE STREAM
+// collego i 2 flussi, lettura e scrittura con un tubo, come se fosse acqua
+// redireziona i dati da una sorgente all altra
+//creo stram di dati
+const readStr2 = fs.createReadStream(__dirname + '/dati.txt'); // legge un file
+const writeStr2 = fs.createWriteStream(__dirname + '/copia-dati-2.txt'); // crea un nuovo file
+readStr2.pipe(writeStr2);
+
+// creare file zip
+// leggo il file con lo stream e il buffer interno, lo passo a gzip con un pipe che comprime il file, creo il file compresso e scrivo al suo interno
+import * as zLib from 'zlib';
+
+const gZip = zLib.createGzip(); // comprime il file
+const readStr3 = fs.createReadStream(__dirname + '/dati.txt'); // legge un file
+const writeStrZip3 = fs.createWriteStream(__dirname + '/copia-dati-3.gz'); // crea un nuovo file zip
+
+readStr3.pipe(gZip).pipe(writeStrZip3);
 
 
