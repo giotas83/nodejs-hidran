@@ -5,7 +5,7 @@
 // con typescript si usa l'import
 import * as fs from 'fs';
 
-/* fs.writeFile('./modulo-2/test.json', JSON.stringify({nome: 'test'}), (err)=> {
+/* fs.writeFile('./esercizi-2/test.json', JSON.stringify({nome: 'test'}), (err)=> {
     if(err) {
         console.error(err);
     } else {
@@ -13,7 +13,7 @@ import * as fs from 'fs';
     }
 });
 
-fs.readdir('./modulo-2', (err, files) => {
+fs.readdir('./esercizi-2', (err, files) => {
     if(err) {
         console.error(err);
         return;
@@ -25,11 +25,11 @@ fs.readdir('./modulo-2', (err, files) => {
 async function scriviEleggiCartella() {
   try {
     // Scrivi il file
-    await fs.promises.writeFile("./modulo-2/test.json", JSON.stringify({ nome: "test" }));
+    await fs.promises.writeFile("./esercizi-2/test.json", JSON.stringify({ nome: "test" }));
     console.log("File scritto con successo.");
 
     // Leggi la directory
-    const files = await fs.promises.readdir("./modulo-2");
+    const files = await fs.promises.readdir("./esercizi-2");
     console.log("Contenuto della directory:", files);
   } catch (errore) {
     console.error("Si è verificato un errore:", errore);
@@ -61,6 +61,6 @@ async function scriviLog(messaggio: string, filePath: string) {
 
 }
 
-scriviLog("Questo è un messaggio di log", "./modulo-2/mioFileLog.txt"); 
+scriviLog("Questo è un messaggio di log", "./esercizi-2/mioFileLog.txt"); 
 
 

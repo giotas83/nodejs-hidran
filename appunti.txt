@@ -11,12 +11,14 @@ inizializzato package
 installato nel progetto:
      npm i --save expressjs
      npm i --save lodash
+     npm i --save axios
 
 installare typescript per utilizzarlo in node
     npm i --save-dev typescript
     npm i --save-dev @types/node
     npm i --save-dev @types/express (se installato express)
     npm i --save-dev @types/lodash (se installato lodash)
+     npm i --save-dev @types/axios
 
 inizializzare typescript
     tsc --init
@@ -55,6 +57,8 @@ mettere in package.json lo script per far partire con typescript:
 
 
     comando in package.json -> "start-index": "nodemon index.ts"
+
+    per debug con typescript: https://medium.com/@matteoluigitommasi/setup-the-vscode-debugger-for-a-nodejs-typescript-project-a9c0a5042687
     
 
 

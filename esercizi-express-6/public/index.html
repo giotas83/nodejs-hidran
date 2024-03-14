@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File statico</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let q = document.querySelector;
+        function searchPlaceholder(form) {
+            console.dir(form.mionome.value);
+            console.log(axios);
+            path = form.mionome.value
+            axios.get('http://localhost:3000/'+path).then(data => {
+                q('#response').innerHTML = JSON.stringify(data);
+            }).catch(err => {
+                q('#response').innerHTML = JSON.stringify(err);
+            })
+        }
+    </script>
+</head>
+<body>
+    <h1>file statico html inviato da server</h1>
+    <form onsubmit="searchPlaceholder(this); return false;"> <!-- return per nn ricaricare la pagina-->
+        cosa mostro<input type="text" name="mionome" id="mionome" value="todos">
+        <br>
+        <button type="submit">INVIA</button>
+    </form>
+    <div id="response"></div>
+
+</body>
+</html>
